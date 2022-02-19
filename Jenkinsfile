@@ -4,23 +4,21 @@ pipeline {
     stage('Fluffy Build') {
       agent any
       steps {
-        echo 'Placeholder'
-        sh 'echo Another Placeholder'
+        sh './jenkins/build.sh'
       }
     }
 
     stage('Fluffy Test') {
       agent any
       steps {
-        sh 'sleep 5'
-        sh 'echo Success!'
+        sh './jenkins/test-all.sh'
       }
     }
 
     stage('Fluffy Deploy') {
       agent any
       steps {
-        echo 'Placeholder'
+        sh './jenkins/deploy.sh staging'
       }
     }
 
