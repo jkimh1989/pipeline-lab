@@ -15,14 +15,14 @@ pipeline {
           agent any
           steps {
             sh './jenkins/test-backend.sh'
-            junit 'target/surefire-reports/**/TEST*.xml'
+            junit(testResults: 'target/surefire-reports/**/TEST*.xml', skipPublishingChecks: true)
           }
         }
 
         stage('Frontend') {
           steps {
             sh './jenkins/test-frontend.sh'
-            junit 'target/test-results/**TEST*.xml'
+            junit(testResults: 'target/test-results/**TEST*.xml', skipPublishingChecks: true)
           }
         }
 
