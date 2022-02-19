@@ -5,6 +5,7 @@ pipeline {
       agent any
       steps {
         sh './jenkins/build.sh'
+        archiveArtifacts 'target/*.jar'
       }
     }
 
@@ -12,6 +13,7 @@ pipeline {
       agent any
       steps {
         sh './jenkins/test-all.sh'
+        junit 'target/**/TEST*.xml'
       }
     }
 
